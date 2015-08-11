@@ -1,0 +1,18 @@
+//
+//  ShunShunLiuXue-Prefix.pch
+//  ShunShunLiuXue
+//
+//  Created by 李晓辉 on 15/8/7.
+//  Copyright (c) 2015年 顺顺留学. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
