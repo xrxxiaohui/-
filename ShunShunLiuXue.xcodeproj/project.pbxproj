@@ -36,7 +36,7 @@
 		276E3A291B9E7C3C00B76D1D /* MyMentionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A281B9E7C3C00B76D1D /* MyMentionViewController.m */; };
 		276E3A2C1B9E7C4A00B76D1D /* MyAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A2B1B9E7C4A00B76D1D /* MyAnswerViewController.m */; };
 		276E3A2F1B9E7C5500B76D1D /* MyMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A2E1B9E7C5500B76D1D /* MyMessageViewController.m */; };
-		276E3A321B9E7F3D00B76D1D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A311B9E7F3D00B76D1D /* SettingViewController.m */; };
+		276E3A321B9E7F3D00B76D1D /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A311B9E7F3D00B76D1D /* SettingViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		276E3A351B9EB78C00B76D1D /* SUNSlideSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A341B9EB78C00B76D1D /* SUNSlideSwitchView.m */; };
 		276E3A391B9EBA9900B76D1D /* XueYouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A381B9EBA9900B76D1D /* XueYouViewController.m */; };
 		276E3A3F1B9EBACC00B76D1D /* WenTiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276E3A3E1B9EBACC00B76D1D /* WenTiViewController.m */; };
@@ -222,6 +222,10 @@
 		27AEFF1B1B8EA0DF008BC083 /* AddAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AEFF1A1B8EA0DF008BC083 /* AddAnswerViewController.m */; };
 		27AEFF1E1B8EA0F7008BC083 /* CareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AEFF1D1B8EA0F7008BC083 /* CareViewController.m */; };
 		27CBE0BF1B91A52D00255C76 /* LeftTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CBE0BE1B91A52D00255C76 /* LeftTableViewCell.m */; };
+		A10D4BB91BA66CED00E827A7 /* SSSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D4BB71BA66CED00E827A7 /* SSSettingTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A10D4BBA1BA66CED00E827A7 /* SSSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10D4BB81BA66CED00E827A7 /* SSSettingTableViewCell.xib */; };
+		A10D4BBE1BA6935800E827A7 /* SSSetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D4BBD1BA6935800E827A7 /* SSSetModel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A1EA2DEF1BA6B8B8006FCE0A /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EA2DEE1BA6B8B8006FCE0A /* AddressViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -622,6 +626,13 @@
 		27AEFF1D1B8EA0F7008BC083 /* CareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareViewController.m; sourceTree = "<group>"; };
 		27CBE0BD1B91A52D00255C76 /* LeftTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewCell.h; sourceTree = "<group>"; };
 		27CBE0BE1B91A52D00255C76 /* LeftTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewCell.m; sourceTree = "<group>"; };
+		A10D4BB61BA66CED00E827A7 /* SSSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSettingTableViewCell.h; sourceTree = "<group>"; };
+		A10D4BB71BA66CED00E827A7 /* SSSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSettingTableViewCell.m; sourceTree = "<group>"; };
+		A10D4BB81BA66CED00E827A7 /* SSSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSSettingTableViewCell.xib; sourceTree = "<group>"; };
+		A10D4BBC1BA6935800E827A7 /* SSSetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSetModel.h; sourceTree = "<group>"; };
+		A10D4BBD1BA6935800E827A7 /* SSSetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSetModel.m; sourceTree = "<group>"; };
+		A1EA2DED1BA6B8B8006FCE0A /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
+		A1EA2DEE1BA6B8B8006FCE0A /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -746,6 +757,8 @@
 		276E3A231B9E7C1600B76D1D /* PersonalInfo */ = {
 			isa = PBXGroup;
 			children = (
+				A10D4BBB1BA6933200E827A7 /* Models */,
+				A10D4BB51BA66CA800E827A7 /* Views */,
 				27A12BA31BA5EF7600A907DA /* 我的回答 */,
 				276E3A361B9EBA4900B76D1D /* 我的关注 */,
 				276E3A241B9E7C2E00B76D1D /* MyCareViewController.h */,
@@ -844,6 +857,8 @@
 		2789055A1B748F7500892EB6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A1EA2DED1BA6B8B8006FCE0A /* AddressViewController.h */,
+				A1EA2DEE1BA6B8B8006FCE0A /* AddressViewController.m */,
 				276E3A331B9EB78C00B76D1D /* SUNSlideSwitchView.h */,
 				276E3A341B9EB78C00B76D1D /* SUNSlideSwitchView.m */,
 				27665B6D1BA124FA0004481E /* YUScreentPoper */,
@@ -1573,6 +1588,25 @@
 			path = GMDCircleLoader;
 			sourceTree = "<group>";
 		};
+		A10D4BB51BA66CA800E827A7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A10D4BB61BA66CED00E827A7 /* SSSettingTableViewCell.h */,
+				A10D4BB71BA66CED00E827A7 /* SSSettingTableViewCell.m */,
+				A10D4BB81BA66CED00E827A7 /* SSSettingTableViewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		A10D4BBB1BA6933200E827A7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A10D4BBC1BA6935800E827A7 /* SSSetModel.h */,
+				A10D4BBD1BA6935800E827A7 /* SSSetModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1617,6 +1651,7 @@
 		2789051E1B74856F00892EB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = SS;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "顺顺留学";
 				TargetAttributes = {
@@ -1662,6 +1697,7 @@
 				278907471B79DA4000892EB6 /* sidebar_purse@2x.png in Resources */,
 				278906A31B788BE900892EB6 /* menuButtonLighted@2x.png in Resources */,
 				27505D0B1B8B021000639061 /* icon_listheader_animation_1@3x.png in Resources */,
+				A10D4BBA1BA66CED00E827A7 /* SSSettingTableViewCell.xib in Resources */,
 				278907411B79DA2600892EB6 /* sidebar_album@2x.png in Resources */,
 				2789069D1B7886D600892EB6 /* topBarBg@2x.png in Resources */,
 				278907251B79D02600892EB6 /* header_bg@2x.png in Resources */,
@@ -1724,6 +1760,7 @@
 				278CDE891B87FF4C00BF2625 /* UIScrollView+MJExtension.m in Sources */,
 				2789062A1B74B6FA00892EB6 /* NSObject+SBJSON.m in Sources */,
 				2789A84E1B8FF3580096106A /* SelectTeacherTableViewCell.m in Sources */,
+				A10D4BBE1BA6935800E827A7 /* SSSetModel.m in Sources */,
 				27665B891BA124FA0004481E /* UIColor+YUColor.m in Sources */,
 				278906761B74B9C900892EB6 /* SDImageCache.m in Sources */,
 				278CDE8B1B87FF4C00BF2625 /* UIView+MJExtension.m in Sources */,
@@ -1806,6 +1843,7 @@
 				278905BB1B74B0AA00892EB6 /* ConstObject.m in Sources */,
 				278CDE591B85878C00BF2625 /* SelectTeacherViewController.m in Sources */,
 				278CDE871B87FF4C00BF2625 /* MJRefreshLegendFooter.m in Sources */,
+				A1EA2DEF1BA6B8B8006FCE0A /* AddressViewController.m in Sources */,
 				278907591B7AC0DC00892EB6 /* BindViewController.m in Sources */,
 				2789067F1B74BB9300892EB6 /* LocationAttributes.m in Sources */,
 				2789070B1B79C99700892EB6 /* QHConfiguredObj.m in Sources */,
@@ -1838,6 +1876,7 @@
 				278CDE5D1B8588CF00BF2625 /* SelectTeacherViewCell.m in Sources */,
 				276E3A221B9D42B100B76D1D /* SelectMarkViewController.m in Sources */,
 				278906611B74B99700892EB6 /* UIViewsAnimation.m in Sources */,
+				A10D4BB91BA66CED00E827A7 /* SSSettingTableViewCell.m in Sources */,
 				276E3A2C1B9E7C4A00B76D1D /* MyAnswerViewController.m in Sources */,
 				278906941B78420800892EB6 /* MBProgressHUD.m in Sources */,
 				27665B8F1BA124FA0004481E /* YUDarkGlassView.m in Sources */,

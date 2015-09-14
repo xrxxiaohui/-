@@ -283,6 +283,15 @@
 /** 对评论发表评论 **/
 #define REQUEST_COMMENT_COMMENT @"interface.php?mod=newreply&news_id=%@&token=%@&message=%@&news_title=%@&point=%@&reply_pid=%@"
 
+/** 法律信息H5页*/
+#define kLawInfo @"http://api.shunshunliuxue.com/m/client/servies/"
+
+/** 关于顺顺H5页*/
+#define kAboutShunshun @"http://api.shunshunliuxue.com/m/client/statement/"
+
+/** 意见反馈接口*/
+#define kAdviceFeedback @"http://api.shunshunliuxue.com/about/api/feedback/"
+
 #define top_H 64
 
 #define BACK_X 0
