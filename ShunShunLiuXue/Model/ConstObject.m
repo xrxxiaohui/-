@@ -11,13 +11,22 @@
 @implementation ConstObject
 @synthesize homeViewController;
 @synthesize sinaLoginFrom,qqLoginFrom;
+
+@synthesize questionID;
+@synthesize questionText;
+@synthesize isFromQusetionToAnswer;
+@synthesize questionFocus;
+@synthesize askQuestionInfo;
+@synthesize teacherName;
+@synthesize personalInfo;
+
 @synthesize isLogin,isFromQQFriendsInvite,isFromWXFriendsInvite,isHavePic,isWXFromExchangeGoodsPage,isWXFromZaShiWuPage,isWXFromFreeUseGoodsPage,isAddCoins_ExchangeGoodsSinaShare,isAddCoins_ExchangeGoodsTencentShare,isAddCoins_ExchangeGoodsWXShare,isAddCoins_ZaShiWuSinaShare,isAddCoins_ZaShiWuTencentShare,isAddCoins_ZaShiWuWXShare,isAddCoins_FreeUseGoodsWXShare,isAddCoins_FreeUseGoodsSinaShare,isAddCoins_FreeUseGoodsTencentShare,isReloadProductDetailData,isFromZaShiWuView,isFromFreeUseDetailPage,isFromExchangeGoodsPage,questionDetailWXShare,isQuestionDeatailQQShare,isQuestionDeatailWXFriOrWXCircleShare,isSystemMess_TQRichTextView,isSystemMessTitle_TQRichTextView,isBeforeWXFromFreeUseGoods,noShareWX_FreeUseApply;
 @synthesize clickFrom;
 @synthesize questionCount;
 @synthesize messageCount;
 @synthesize isHomePage;
 @synthesize coinNumber,eggCoinCount;
-@synthesize messageNavigationController;
+@synthesize mainNavigationController;
 @synthesize jinDanPic,userLocationInfo;
 @synthesize jinDanTitle;
 @synthesize reLoadHomeData,reLoadMessageData,reLoadWealthData,reLoadFreeUseData,reLoadMallData,reLoadSetData,reLoadProfileData,isReloadDiaryList,removeTQTextDelegate;

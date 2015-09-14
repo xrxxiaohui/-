@@ -18,18 +18,20 @@
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        tipLabel  = [[UILabel alloc]initWithFrame:CGRectMake(90.0f, 8.0f, 140.0f, 25.0f)];
+        tipLabel  = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2-60, 5,120 , 40)];
         tipLabel.textAlignment = NSTextAlignmentCenter;
         tipLabel.backgroundColor = [UIColor clearColor];
-        tipLabel.textColor = kContentColor;
+//        tipLabel.textColor = kContentColor;
         tipLabel.font = kFontArial15;
+        [tipLabel setTextColor:COLOR(0xb3, 0xb3, 0xb3)];
         [self.contentView addSubview:tipLabel];
         [tipLabel release];
         
-        actView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        actView.frame = CGRectMake(80.0f, 4.0f, 32.0f, 32.0f);
-        [self.contentView addSubview:actView];
-        [actView release];
+        
+//        actView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//        actView.frame = CGRectMake(80.0f, 4.0f, 32.0f, 32.0f);
+//        [self.contentView addSubview:actView];
+//        [actView release];
         
         self.contentView.backgroundColor = [UIColor clearColor];
     }
@@ -38,14 +40,17 @@
 }
 
 - (void)startAction{
-    
-    [actView startAnimating];
+    [GMDCircleLoader setOnView:self withTitle:@"" animated:YES];
+//    [actView startAnimating];
 }
 
-- (void)stopAction{
-    
-    [actView stopAnimating];
+- (void)stopAction {
+    [GMDCircleLoader hideFromView:self animated:YES];
 }
+//- (void)stopAction{
+//    
+////    [actView stopAnimating];
+//}
 
 - (void)setTips:(NSString *)aTip{
     

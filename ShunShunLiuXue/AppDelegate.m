@@ -7,14 +7,22 @@
 //
 
 #import "AppDelegate.h"
-#import "SUNViewController.h"
+//#import "SUNViewController.h"
 #import "LeftViewController.h"
-#import "MMDrawerController.h"
-#import "MMDrawerVisualState.h"
+//#import "MMDrawerController.h"
+//#import "MMDrawerVisualState.h"
 #import <AdSupport/ASIdentifierManager.h>
 #import "UIDevice+IdentifierAddition.h"
+#import "SliderViewController.h"
+#import "LeftViewController.h"
+//#import "HomePageViewController.h"
+//#import "MainTabViewController.h"
+#import "MLBlackTransition.h"
+#import "ConstObject.h"
+#import <ShareSDK/ShareSDK.h>
+#import "SheQuViewController.h"
 
-static const CGFloat kPublicLeftMenuWidth = 280.0f;
+//static const CGFloat kPublicLeftMenuWidth = kScreenWidth-220;
 
 
 @interface AppDelegate ()
@@ -28,6 +36,10 @@ static const CGFloat kPublicLeftMenuWidth = 280.0f;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
     
     //获取用户地理位置
     [self gatherUserLocationInformationAndUdid];
@@ -61,6 +73,9 @@ static const CGFloat kPublicLeftMenuWidth = 280.0f;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
+    
+    [ShareSDK registerApp:@"9af115514064"];
+
     
 //    //登录成功，注册token消息
 //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -105,28 +120,72 @@ static const CGFloat kPublicLeftMenuWidth = 280.0f;
 //创建主视图和左视图
 - (void)createMainView{
     // 创建了主视图和左视图 设置宽度 响应手势
-    if (![self.window.rootViewController isKindOfClass:[SUNViewController class]]) {
-        LeftViewController *leftVC = [[LeftViewController alloc] init];
-        SUNViewController * drawerController = [[SUNViewController alloc]
-                                                initWithCenterViewController:leftVC.homeSwitchVC
-                                                leftDrawerViewController:leftVC
-                                                rightDrawerViewController:nil];
-        [drawerController setMaximumLeftDrawerWidth:kPublicLeftMenuWidth];
-        [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-        [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-        [drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-            MMDrawerControllerDrawerVisualStateBlock block;
-            block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
-            block(drawerController, drawerSide, percentVisible);
-        }];
-        
-        [leftVC release];
-        
-        [self.window setRootViewController:drawerController];
-        [self.window makeKeyAndVisible];
-    }else{
-        
-    }
+//    if (![self.window.rootViewController isKindOfClass:[SUNViewController class]]) {
+//        LeftViewController *leftVC = [[LeftViewController alloc] init];
+//        SUNViewController * drawerController = [[SUNViewController alloc]
+//                                                initWithCenterViewController:leftVC.homeSwitchVC
+//                                                leftDrawerViewController:leftVC
+//                                                rightDrawerViewController:nil];
+//        [drawerController setMaximumLeftDrawerWidth:kPublicLeftMenuWidth];
+//        [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+//        [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+//        [drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+//            MMDrawerControllerDrawerVisualStateBlock block;
+//            block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
+//            block(drawerController, drawerSide, percentVisible);
+//        }];
+    
+//        [leftVC release];
+//        
+//        [self.window setRootViewController:drawerController];
+//        [self.window makeKeyAndVisible];
+//    }else{
+//        
+//    }
+    LeftViewController *leftVC = [[LeftViewController alloc] init];
+    [SliderViewController sharedSliderController].LeftVC = leftVC;
+//    [SliderViewController sharedSliderController].MainVC = [[MainTabViewController alloc] init];
+    [SliderViewController sharedSliderController].MainVC = [[SheQuViewController alloc] init];;
+    [SliderViewController sharedSliderController].LeftSContentOffset=245;
+    [SliderViewController sharedSliderController].LeftContentViewSContentOffset = 50;
+    [SliderViewController sharedSliderController].LeftSContentScale=1;//缩放
+    [SliderViewController sharedSliderController].LeftSJudgeOffset=100;
+    [SliderViewController sharedSliderController].changeLeftView = ^(CGFloat sca, CGFloat transX)
+    {
+        //        leftVC.contentView.layer.anchorPoint = CGPointMake(1, 1);
+        CGAffineTransform ltransS = CGAffineTransformMakeScale(sca, sca);
+        CGAffineTransform ltransT = CGAffineTransformMakeTranslation(transX, 0);
+        CGAffineTransform lconT = CGAffineTransformConcat(ltransT, ltransS);
+        leftVC.contentView.transform = lconT;
+    };
+    
+    //    [UIViewController validatePanPackWithMLTransitionGestureRecognizerType:MLTransitionGestureRecognizerTypePan];
+    //手势返回更新为MLBlackTransition
+    [MLBlackTransition validatePanPackWithMLBlackTransitionGestureRecognizerType:MLBlackTransitionGestureRecognizerTypePan];
+    
+    UINavigationController *naviC = [[UINavigationController alloc] initWithRootViewController:[SliderViewController sharedSliderController]];
+    [[ConstObject instance] setMainNavigationController:naviC];
+    self.window.rootViewController = naviC;
+    
+    [self.window makeKeyAndVisible];
+
+}
+
+- (BOOL)application: (UIApplication *)application  handleOpenURL: (NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application: (UIApplication *)application
+            openURL: (NSURL *)url
+  sourceApplication: (NSString *)sourceApplication
+         annotation: (id)annotation
+{
+    return [ShareSDK handleOpenURL: url
+                 sourceApplication:sourceApplication
+                        annotation: annotation
+                        wxDelegate: self];
 }
 
 

@@ -589,6 +589,7 @@
 
 - (void)drawRect:(CGRect)rect {
 	
+    
     CGContextRef context = UIGraphicsGetCurrentContext();
 
     if (dimBackground) {

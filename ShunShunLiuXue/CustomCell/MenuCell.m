@@ -38,8 +38,8 @@
         
         //标题
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 0.0f, 150.0f, 50.0f)];
-        titleLabel.font = kFontArialBoldMT15;
-        titleLabel.textColor = kLeftContentColor;
+//        titleLabel.font = kFontArialBoldMT15;
+//        titleLabel.textColor = kLeftContentColor;
         titleLabel.backgroundColor = [UIColor clearColor];
         [self addSubview:titleLabel];
         [titleLabel release];

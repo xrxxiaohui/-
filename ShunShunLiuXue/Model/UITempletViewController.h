@@ -19,6 +19,7 @@
 #import "SCGIFImageView.h"
 #import "UIButton+WebCache.h"
 #import "AppDelegate.h"
+#import "MJRefresh.h"
 
 
 @interface UITempletViewController : UIViewController<UIAlertViewDelegate>{
@@ -125,5 +126,21 @@
 //获取账户性别
 - (NSString *)readFemale;
 
-
+- (BOOL) isBlankString:(NSString *)string;
+- (BOOL) isBlankDictionary:(NSDictionary *)dictionary;
+//时间戳转时间
+-(NSString *)transformTime:(NSString *)originTime;
+//计算字符串size
+- (CGSize)getStringSizeWith:(NSString*)_mystr boundingRectWithSize:(CGSize)_boundSize font:(UIFont*)font;
+//获取token
+-(NSString *)userToken;
+//删除token
+-(void)deleteToken;
+//获取account信息
+-(NSDictionary *)accountInfo;
+//获取uid
+-(NSString *)userIDs;
+-(UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+//字符串简单处理
+-(NSString *)trimString:(NSString *)tempString;
 @end

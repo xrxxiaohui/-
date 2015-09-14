@@ -21,6 +21,16 @@
 }
 
 @property (nonatomic, retain) UIViewController *homeViewController;
+@property (nonatomic, retain) UINavigationController *mainNavigationController;
+@property (nonatomic, retain) NSString *questionID;//点击的问题id
+@property (nonatomic, retain) NSString *questionText;//点击的问题内容
+@property (nonatomic, assign) BOOL isFromQusetionToAnswer;
+@property (nonatomic, retain) NSString *questionFocus;
+@property (nonatomic, retain) NSString *askQuestionInfo;
+@property (nonatomic, retain) NSString *teacherName;
+@property (nonatomic, retain) NSMutableArray *personalInfo;
+
+
 @property (nonatomic, retain) UINavigationController *messageNavigationController;
 @property (nonatomic, assign) int sinaLoginFrom;// 1来自登录页面的新浪微博登录，2来自设置页面绑定 3来自分享页面的绑定 4来自同步页面的绑定 5来自邀请好友页面的绑定
 @property (nonatomic, assign) int qqLoginFrom;// 1来自登录页面的QQ登录，2来自设置页面绑定 3来自分享页面的绑定 4来自同步页面的绑定 5来自邀请好友页面的绑定

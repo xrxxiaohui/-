@@ -8,24 +8,38 @@
 
 //定义屏幕
 #define kScreenBounds          [[UIScreen mainScreen] applicationFrame]
+#define kScreenWidth           [[UIScreen mainScreen] applicationFrame].size.width
+#define kScreenHeight          [[UIScreen mainScreen] applicationFrame].size.height
+
 
 //iPhone5 定义
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6p ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 
+//iPhone4 定义
+#define iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone4s ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+
+
+#define kConnectUs @"http://app.xjlastmile.com/lxwm/201505/07/t20150507_2132921.shtml"
+
+#define kAboutUs @"http://app.xjlastmile.com/gywm/201505/07/t20150507_2132919.shtml"
+
+#define SystemVersion [[[UIDevice currentDevice] systemVersion] floatValue]
 //判断是否是ios7系统
-#define kSystemIsIOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0000
+#define kSystemIsIOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7
 
-//判断系统是否是6系统以上
-#define kSystemIsAboveIOS6 [[[UIDevice currentDevice] systemVersion] floatValue] >= 6.000
+//常用链接
+#define Links    @"http://x.watching.cn/"
+//接口链接
+#define interfaceLinks    @"http://h.watching.cn/"
 
-//判断手机尺寸是否是iPhone5以上
-#define iphoneTypeAbove5  [[UIScreen mainScreen] currentMode].size.height >= 1136
+//#define Links @"http://app.xjlastmile.com/"
+#define kIsWifiEnable     [CheckNetwork IsEnableWIFI]
 
-//appStore 地址
-#define kAppStore               @"https://itunes.apple.com/cn/app/mei-zhuang-wen-da-5fen-zhong/id762139320?mt=8"
 
-//评分
-#define kAppStoreReview         @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=762139320"
+#define kSuggestionUrl @"http://h.watching.cn/last1km/suggest.php?suggestion=%@&email=%@"
 
 //评分for ios 7
 #define kAppStoreReviewForIos7  @"itms-apps://itunes.apple.com/app/id762139320"
@@ -38,33 +52,6 @@
 
 //应用下载网页链接 （新浪微博、腾讯、qq）
 #define kAppThirdDownLoadURL    @"http://beauty.hers.com.cn/app.php"
-
-//爱奇艺AppKey
-#define kQIYIAppKey @"f0720bf8314d494a93b28e9c8a6ca231"
-
-//爱奇艺AppSecret
-#define kQIYIAppSecret @"cab0a2e05c7ba98fc7d5aeb8a6c23dc0"
-
-//上传视频时在主页面更新进度条
-#define kChangeProgress @"changeProgressNum"
-
-//上传视频完成后 隐藏进度条
-#define kHideProgress   @"hideProgress"
-
-//上传视频
-#define kUploadVideo    @"uploadVideo"
-
-//签到
-#define kCheckinRemark  @"checkinRemark"
-
-//签到成功左侧栏 签到改为已签到
-#define kCheckined      @"checkined"
-
-//发帖成功弹出框
-#define kShowFatieRemind @"showFatieRemind"
-
-//主视图发帖成功后 升级动画 显示
-#define kShowUpgradeGif_HomePage    @"showUpgradeGif_HomePage"
 
 #pragma mark---
 #pragma mark--- QQLogin
@@ -83,19 +70,13 @@
 #define kRegisterPushNotification        @"kRegisterPushNotification"    //注册该用户的推送消息
 #define kResetNavigationBarNotification  @"kResetNavigationBarNotification" //金币商城，查看完图片后返回，重新显示bar
 #define kRefreshEggsAddressNotification  @"kRefreshEggsAddressNotification" //金蛋地址，修改成功后刷新数据
-#define kPhotoFromCamera                 @"kPhotoFromCamera"               //选取图片来自相机
-#define kDeletePhotoFromBrowser          @"kDeletePhotoFromBrowser"        //从图片浏览器删除图片
-#define kNetWorkTimeOutNotification      @"kNetWorkTimeOut"
-#define kShowGoldEggForUsersNotification @"kShowGoldEggForUsersNotification"   //针对不登录/登录只浏览，不做交互的用户金蛋奖励机制
-#define kShowGoldEggForUsersLoginNotification @"kShowGoldEggForUsersLoginNotification"   //针对机制登录后，用户金蛋奖励机制
+#define kHideMenuControllerImage  @"kHideMenuControllerImage"               //隐藏menucontroller背景
 
 #pragma mark---
 #pragma mark---font
 
 //定义字体
 #define kFontArial22 [UIFont fontWithName:@"Arial" size:22]
-#define kFontArial19 [UIFont fontWithName:@"Arial" size:19]
-#define kFontArial18 [UIFont fontWithName:@"Arial" size:18]
 #define kFontArial17 [UIFont fontWithName:@"Arial" size:17]
 #define kFontArial16 [UIFont fontWithName:@"Arial" size:16]
 #define kFontArial15 [UIFont fontWithName:@"Arial" size:15]
@@ -103,53 +84,15 @@
 #define kFontArial13 [UIFont fontWithName:@"Arial" size:13]
 #define kFontArial12 [UIFont fontWithName:@"Arial" size:12]
 #define kFontArial11 [UIFont fontWithName:@"Arial" size:11]
-#define kFontArial10 [UIFont fontWithName:@"Arial" size:10]
-#define kFontArial9  [UIFont fontWithName:@"Arial" size:9]
-
-//定义粗体字体
-#define kFontArialBoldMT22 [UIFont fontWithName:@"Arial-BoldMT" size:22]
-#define kFontArialBoldMT19 [UIFont fontWithName:@"Arial-BoldMT" size:19]
-#define kFontArialBoldMT18 [UIFont fontWithName:@"Arial-BoldMT" size:18]
-#define kFontArialBoldMT17 [UIFont fontWithName:@"Arial-BoldMT" size:17]
-#define kFontArialBoldMT16 [UIFont fontWithName:@"Arial-BoldMT" size:16]
-#define kFontArialBoldMT15 [UIFont fontWithName:@"Arial-BoldMT" size:15]
-#define kFontArialBoldMT14 [UIFont fontWithName:@"Arial-BoldMT" size:14]
-#define kFontArialBoldMT13 [UIFont fontWithName:@"Arial-BoldMT" size:13]
-#define kFontArialBoldMT12 [UIFont fontWithName:@"Arial-BoldMT" size:12]
-#define kFontArialBoldMT11 [UIFont fontWithName:@"Arial-BoldMT" size:11]
+#define kFontArial8 [UIFont fontWithName:@"Arial" size:8]
 
 //定义项目红，绿 两种主基调颜色
-#define kRedColor [UIColor colorWithRed:255.0f/255.0f green:139.0f/255.0f blue:169.0f/255.0f alpha:1.0f]
-#define kGreenColor [UIColor colorWithRed:114.0f/255.0f green:221.0f/255.0f blue:195.0f/255.0f alpha:1.0f]
+#define kRedColor [UIColor colorWithRed:255.0f/255.0f green:114.0f/255.0f blue:114.0f/255.0f alpha:1.0f]
+#define kGreenColor [UIColor colorWithRed:116.0f/255.0f green:209.0f/255.0f blue:187.0f/255.0f alpha:1.0f]
 #define kDarkGreenColor [UIColor colorWithRed:113.0f/255.0f green:138.0f/255.0f blue:130.0f/255.0f alpha:1.0f]
-#define kGrayColor  [UIColor colorWithRed:133.0f/255.0f green:120.0f/255.0f blue:122.0f/255.0f alpha:1];
+#define kGrayColor  [UIColor colorWithRed:186.0f/255.0f green:189.0f/255.0f blue:196.0f/255.0f alpha:1];
+#define RGBCOLOR(r,g,b)     [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 
-//黄绿色用户名等
-#define kUserNameColor [UIColor colorWithRed:170.0f/255.0f green:183.0f/255.0f blue:77.0f/255.0f alpha:1.0f]
-
-//鲜艳的绿色 圈子关注等
-#define kFreshGreenColor [UIColor colorWithRed:146.0f/255.0f green:209.0f/255.0f blue:94.0f/255.0f alpha:1.0f]
-
-//正文黑色
-#define kContentColor [UIColor colorWithRed:61.0f/255.0f green:52.0f/255.0f blue:54.0f/255.0f alpha:1.0f]
-
-//左侧栏 黑色
-#define kLeftContentColor [UIColor colorWithRed:71.0f/255.0f green:71.0f/255.0f blue:71.0f/255.0f alpha:1.0f]
-
-//年龄、时间、评论数等属性浅灰色
-#define kLightGrayColor [UIColor colorWithRed:133.0f/255.0f green:120.0f/255.0f blue:122.0f/255.0f alpha:1.0f]
-
-//肤质测试结果标题红色
-#define kSkinRedColor   [UIColor colorWithRed:248.0f/255.0f green:159.0f/255.0f blue:185.0f/255.0f alpha:1.0f]
-
-//设置个人资料标题深灰色
-#define kSetProfileDarkGrayColor   [UIColor colorWithRed:148.0f/255.0f green:136.0f/255.0f blue:138.0f/255.0f alpha:1.0f]
-
-//金币商城“我的金币数”深蓝色
-#define kCoinsMailDarkBlueColor   [UIColor colorWithRed:107.0f/255.0f green:209.0f/255.0f blue:188.0f/255.0f alpha:1.0f]
-
-//金币商城商品金币数玫红色
-#define kCoinsMailDarkRedColor   [UIColor colorWithRed:255.0f/255.0f green:140.0f/255.0f blue:175.0f/255.0f alpha:1.0f]
 
 #pragma mark---
 #pragma mark---SinaLogin
@@ -174,66 +117,6 @@
 
 #define kSinaInvitedBind         @"sinaInvitedBind"         //sina邀请好友绑定回调
 
-#define kSinaShareBind_ExchangeGoods @"sinaShareBind_ExchangeGoods" //“兑换商品”sina分享绑定回调
-
-#define kChangeInvitedFriendsNum @"changeNum"               //邀请好友的数目更改
-
-#define kAddLoginView            @"toAddLoginView"          //添加登录视图
-
-#define kRemoveLoginView         @"toRemoveLoginView"       //移除登录视图
-
-#define kGetLoginUserInfo        @"getLoginUserInfo"        //拿到登录用户信息
-
-#define kShowLoginSucceedTips    @"ShowLoginSucceedTips"        //显示登录成功提示
-
-#define kReloadData              @"ReloadData"              //详情页重新加载数据
-
-#define kReloadData_FreeUseDetailPage  @"reloadData_FreeUseDetailPage"  //试用商品详情重新加载数据
-
-#define kReloadData_AuditQuery  @"reloadData_AuditQuery"    //审核进程信息重新加载数据
-
-#define kGetJinDan               @"kGetJinDan"              //得到金蛋
-
-#define kGetShiWu                @"kGetShiWu"               //得到实物
-
-#define ktoDisappearTheView      @"ktoDisappearTheView"    //让金蛋消失
-
-#define kHiddenNavigationBar     @"kHiddenNavigationBar"    //隐藏系统上导航
-
-#define kReloadSystemData        @"kReloadSystemData"      //systemdata页加载数据
-
-#define kUpgradeGif              @"kUpgradeGif"           //回复成功后升级动画
-
-#define ktoTopRefreshWenDaPageData         @"toTopRefreshData0"    //刷新问答数据并回到顶部
-#define ktoTopRefreshFirstXiuData          @"toTopRefreshData1"    //刷新秀数据并回到顶部
-#define ktoTopRefreshCheDanPageData        @"toTopRefreshData2"    //刷新扯淡数据并回到顶部
-#define ktoTopRefreshReMenPageData         @"toTopRefreshData3"     //刷新热门数据并回到顶部
-#define ktoTopRefreshQiangDaPageData       @"toTopRefreshData4"     //刷新抢答数据并回到顶部
-
-#define ktimeAfter                         @"10"                   //刷新数据的时间间隔
-#define kalwaysRefreshFirstPageData        @"kalwaysRefreshFirstPageData"    //没有时间限制刷新最新页数据并回到顶部
-#define kalwaysRefreshFourthPageData       @"kalwaysRefreshFourthPageData"    //没有时间限制刷新抢答页数据并回到顶部
-
-#define kGetJinDan0               @"kGetJinDan0"              //问答提问得到金蛋
-
-#define kGetJinDan1               @"kGetJinDan1"              //美妆提问得到金蛋
-
-#define kGetJinDan2               @"kGetJinDan2"              //秀提问得到金蛋
-
-#define kGetJinDan3               @"kGetJinDan3"              //私房话提问得到金蛋
-
-#define kGetJinDan4               @"kGetJinDan4"              //热门提问得到金蛋
-
-#define kGetJinDan5               @"kGetJinDan5"              //抢答提问得到金蛋
-
-#define kTransferPostNotification           @"kTransferPostNotification"             //发帖成功后，转移通知
-#define kRefreshTransferPageNotification    @"kRefreshTransferPageNotification"      //发帖成功后，转移到的页面刷新数据
-
-//ZBMessage ToolBar 事件消息
-#define kZBMessageKeyBoardNotification     @"kZBMessageKeyBoardNotification"   //键盘
-#define kZBMessageFaceNotification         @"kZBMessageFaceNotification"       //表情
-#define kZBMessagePictureNotification      @"kZBMessagePictureNotification"    //图片
-#define kZBMessageVoiceNotification        @"kZBMessageVoiceNotification"      //语音
 
 
 
@@ -256,249 +139,204 @@
 //统计事件
 #define kCountEvents            @"http://push.hers.cn/record/event?app=iphone&type=5&uid=%@&event=%@&md5=%@"
 
-//精品应用推荐
-#define kCommandUrl             @"http://push.hers.cn/record/recommends?app=iphone&type=5"
+
+//登陆
+//注册
+#define kRegist @"/interface.php?mod=register&username=%@&nickname=%@&password=%@&code=%@"
+//个人信息
+#define kGeRenInfo @"/interface.php?mod=userinfo"
+//#define kGeRenInfo @"/interface.php?mod=userinfo&type=me&token=%@";
+
+
+//根据newsId获取tid
+#define kNewsIdToTid @"/interface.php?mod=gettidfromnewsid"
+//评论
+#define kPingLun @"/interface.php?mod=viewthread&type=reply&tid=%@&page=%@&token=%@&type=levelreply"
+
 
 #pragma --mark ============== 接口数据请求 ==============
+#define avatarUrl     @"http://www.shunshunliuxue.com/uploads/avatar/"
 
+//请求前缀
+#define kHeader @"http://api.shunshunliuxue.com"
+//#define kHeader @"http://123.57.2.117"
+
+#define kRegister      @"%@/account/api/register_process/?"
+#define kLogin         @"%@/account/api/login_process/?"
+#define kYanZhengMa    @"%@/account/api/send_sms/?"
+#define kCategoryUrl   @"%@/topic/api/topic_catalog/?"
+
+//需要传token
+#define kQuestionUrl   @"%@/question/api/question_list/?sort_type=%@&category=%@&page=%@&token=%@"
+//点赞 取消点赞
+#define kVoteTheAnswer @"%@/question/api/answer_vote/?answer_id=%@&token=%@&value=1"
+//问题info
+#define kQuestionInfo  @"%@/question/api/question/?id=%@&page=%@&token=%@"
+//关注问题
+#define kCareQuestion  @"%@/question/api/focus/?question_id=%@&token=%@"
+//添加回答  attach_access_key暂时没有写
+#define kSaveAnswer    @"%@/question/api/save_answer/?"
+//编辑修改回答  attach_access_key meiyou xie
+#define kUpdateAnswer  @"%@/question/api/update_answer/?"
+//hot_topic
+#define kHotTopic      @"%@/topic/api/hot_topics/?"
+//focus_topics_list
+#define kFocusTopic    @"%@/home/api/focus_topics_list/?page=%@&token=%@"
+//focus_question_list
+#define kFocusQuestionList  @"%@/home/api/focus_question_list/?"
+//get_user_friends
+#define kFocusFriendList    @"%@/follow/api/get_user_friends/?"
+//我的提问
+#define kFocusUserQuestion  @"%@/people/api/user_question/?"
+//发布问题
+#define kFaBuQuestion @"%@/publish/api/publish_question/?"
+//我的回答
+#define kFocusUserAnswer  @"%@/people/api/user_answer/?"
 //定义请求数据长度
-#define kCount @"20"
+#define kCount @"10"
 
 //爱物美妆 管理员uid
 #define kAdministratorUid      @"4162"
 
-//启动收集若干用户信息
-#define kGatherUserInformation  @"http://wenda.hers.com.cn/mobile/gather"
+//-----------------------------
+//关注
+#define kGuanzhu @"interface.php?mod=getmyfollow&token=%@"
+/*
+ 获取tid
+ */
+#define KUid @"interface.php?mod=gettidfromnewsid&news_id=%@&news_title=%@&doctime=%@"
 
-//首页 最新
-#define kHomePageNeweest        @"http://wenda.hers.com.cn/mobile/questions?type=%@&page=%@&pagesize=%@&maxid=%@&version=1"
+/*
+ 新闻点赞
+ */
+#define KDianZan @"interface.php?mod=zan&tid=%@&token=%@"
 
-//首页的最热 关注 抢答
-#define kHomePageOtherThree     @"http://wenda.hers.com.cn/mobile/questions?type=%@&page=%@&pagesize=%@&maxid=%@&version=1"
+/*
+ 用户点赞
+ */
+#define KUserDZ @"interface.php?mod=zan&pid=%@&token=%@"
 
-//系统消息
-#define kSystemMessage          @"http://wenda.hers.com.cn/mobile/system_message?id=%@&page=%@&pagesize=%@"
+//取消关注
+#define kQuXiaoGuanZhu @"interface.php?mod=unfollow&zb_id=%@&zb_name=%@&token=%@"
+//取消收藏
+#define kQuXiaoShouCang @"interface.php?mod=delfavo&news_id=%@&token=%@"
 
-//问题详情
-#define kQuestionDetail         @"http://wenda.hers.com.cn/mobile/question?id=%@&owner=%@&page=%@&pagesize=%@"
+//验证码(注册或者激活时调用)
+//检测验证码是否正确
+//#define kSureYanZhengMa @"interface.php?mod=verifyphone&type=forget&username=%@"
+//忘记密码的接口(忘记密码的时候调用)
+#define kForgetPassword @"interface.php?mod=verifyphone&type=forget&username=%@"
+#define kGetPassword @"interface.php?mod=forgetpass&username=%@&code=%@"
 
-//取消对问题赞
-#define kCancleVoteTheQuestion  @"http://wenda.hers.com.cn/mobile/unvote?id=%@"
+//修改密码的借口
+#define  kChangePassword @"interface.php?mod=changepasswd&token=%@&newpassword=%@&oldpassword=%@"
 
-//对问题赞
-#define kVoteTheQuestion        @"http://wenda.hers.com.cn/mobile/vote?type=%@&id=%@"
+//修改个人资料的昵称
+#define kMyInfo @"interface.php?mod=modifyinfo&token=%@&nickname=%@"
+//修改bio
+#define kMyInfoBio @"interface.php?mod=modifyinfo&token=%@&bio=%@"
+//修改头像
+#define kMyImage @"interface.php?mod=modifyinfo&token=%@"
 
-//收藏接口
-#define kStoreQuestion          @"http://wenda.hers.com.cn/mobile/collect?id=%@"
+//发表评论
+#define kSendRemark @"interface.php?mod=newreply&token=%@"
 
-//砸蛋接口
-#define kZaDan                  @"http://wenda.hers.com.cn/mobile/hitegg"
 
-//金币商城砸蛋接口
-#define kMallZaDan              @"http://wenda.hers.com.cn/mobile/hitpegg?id=%@"
+////增加主播关注
+//#define kGuanZhuZhuBo @"interface.php?mod=follow&zb_id=%@&zb_name=%@&token=%@"
 
-//取消收藏接口
-#define kCancelStoreQuestion    @"http://wenda.hers.com.cn/mobile/uncollect?id=%@"
+//增加主播关注
+#define kGuanZhuZhuBo @"interface.php?mod=follow&zb_id=%@&zb_name=%@&avataraddr=%@&token=%@"
 
-//提问删除
-#define kDeleteTheQuestion      @"http://wenda.hers.com.cn/mobile/questiondel?id=%@"
 
-//回答删除
-#define kDeleteTheAnswer        @"http://wenda.hers.com.cn/mobile/answerdel?id=%@"
 
-//个人主页
-#define kProfile                @"http://wenda.hers.com.cn/mobile/profile?uid=%@"
+//通过newsid获取评论数
+#define kGetRemarkFromId @"http://h.watching.cn/interface.php?mod=getreplynum&news_id=%@&news_title=%@&dateline=%@"
 
-//编辑个人资料
-#define kModifyProfile          @"http://wenda.hers.com.cn/mobile/update_profile"
+//新闻页收藏        NSMutableArray *ShouCangArr = [[NSMutableArray alloc]initWithObjects:_newsId,_titleString,_summaryString,_urlString,_dateString,_imageString,token, nil];
 
-//回答问题
-#define kAnswerQuestion         @"http://wenda.hers.com.cn/mobile/answer"
+//#define kSaveNews @"interface.php?mod=addfavo&news_id=%@&news_title=%@&news_summary=%@&news_link=%@&dateline=%@&news_page_img=%@&token=%@&type=%@"
+#define kSaveNews @"interface.php?mod=addfavo&news_id=%@&news_title=%@&news_summary=%@&news_link=%@&dateline=%@&news_page_img=%@&token=%@&type=%@"
+//获取通知
+#define kTongZhi @"interface.php?mod=noticelist&token=%@"
 
-//对回答的回复
-#define kReplyAnswerQuestion    @"http://wenda.hers.com.cn/mobile/reply"
+//s删除通知
+#define kDeleteTongZhi @"interface.php?mod=delnotice&token=%@&uid=%@&gpmid=%@"
 
-//提问问题
-#define kAskQuestion            @"http://wenda.hers.com.cn/mobile/ask"
+//用户未读取通知数目
+#define kNoRead @"interface.php?mod=getunread&token=%@"
 
-//第三方登录
-#define kThirdLogin             @"http://wenda.hers.com.cn/mobile/login?type=%@"
+//有声页面收藏
+#define kSaveYouSheng  @"interface.php?mod=addfavo&zb_id=%@&zb_name=%@&summary=%@&video=%@&token=%@&type=%@"
 
-//第三方互绑
-#define kThirdBind              @"http://wenda.hers.com.cn/mobile/bind?target=%@"
+//获取收藏的新闻
+#define kGetShouCang @"interface.php?mod=getfavo&token=%@"
 
-//第三方退出
-#define kThirdLoginout          @"http://wenda.hers.com.cn/mobile/logout"
+//第三方登陆激活接口
+#define kOtherLogin @"interface.php?mod=active&userID=%@&username=%@&password=%@&type=%@"
 
-//返回个人信息
-#define kReturnUserInfo         @"http://wenda.hers.com.cn/mobile/account"
+//批量获取赞与评论
+#define kMoreLikeAndReviews @"interface.php?mod=getreplynumall&news_id_%d=%@"
+/** 发表评论 **/
+#define REQUEST_COMMENT @"interface.php?mod=newreply&news_id=%@&token=%@&message=%@&news_title=%@&point=%@"
 
-//解绑
-#define kRemoveBind             @"http://wenda.hers.com.cn/mobile/unbind"
+/** 对评论发表评论 **/
+#define REQUEST_COMMENT_COMMENT @"interface.php?mod=newreply&news_id=%@&token=%@&message=%@&news_title=%@&point=%@&reply_pid=%@"
 
-//返回微博好友列表
-#define kSinaFriendsList        @"http://wenda.hers.com.cn/mobile/tweibofriends?page=%@&pagesize=%@"//@"http://wenda.hers.com.cn/mobile/weibofriends?page=%@&pagesize=%@"
+#define top_H 64
 
-//新浪微博好友邀请
-#define kSinaFriendsInvite      @"http://wenda.hers.com.cn/mobile/weiboinvite?sinaids=%@&action=%@"
+#define BACK_X 0
+#define BACK_Y 5
+#define BACK_WEITH 30
+#define BACK_HIGHT 30
 
-//QQ或者微信好友邀请
-#define kQQOrWeixinFriendsInvite @"http://wenda.hers.com.cn/mobile/txinvite?type=%@"
+#define OTHERBTN_X 0
+#define OTHERBTN_Y 5
+#define OTHERBTN_WEITH 30
+#define OTHERBTN_HIGHT 30
 
-//财富榜
-#define kTotalWealth            @"http://wenda.hers.com.cn/mobile/wealth?type=%@"
+#define LOGIN_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bg" ofType:@"png"]]
 
-//金币详情
-#define kCoinsDetail            @"http://wenda.hers.com.cn/mobile/coindetail"
+#define LOGIN_BG_568h [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bg_568h" ofType:@"png"]]
 
-//个人消息
-#define kMessages               @"http://wenda.hers.com.cn/mobile/messages?page=%@&pagesize=%@"
+#define INPUT_BG [UIImage imageNamed:@"input_bg"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"input_bg" ofType:@"png"]]
 
-//我的提问
-#define kMyQuestions            @"http://wenda.hers.com.cn/mobile/myquestions?page=%@&pagesize=%@"
+#define INPUT_BG_Text [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"input_bg_text" ofType:@"png"]]
 
-//TA的提问
-#define kOtherQuestions         @"http://wenda.hers.com.cn/mobile/myquestions?uid=%@&page=%@&pagesize=%@"
+#define ACCOUNT_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"account" ofType:@"png"]]
+#define PASSWORD_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"password" ofType:@"png"]]
+#define LOGIN_BTN_BG [UIImage imageNamed:@"login_btn_bg"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"login_btn_bg" ofType:@"png"]]
 
-//我的回答
-#define kMyAnswers              @"http://wenda.hers.com.cn/mobile/myanswers?page=%@&pagesize=%@"
+#define WINXIN_LOGIN_BG [UIImage imageNamed:@"weixin"]// [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weixin" ofType:@"png"]]
+#define QQ_LOGIN_BG [UIImage imageNamed:@"QQ"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"QQ" ofType:@"png"]]
 
-//TA的回答
-#define kOtherAnswers           @"http://wenda.hers.com.cn/mobile/myanswers?uid=%@&page=%@&pagesize=%@"
+#define BACK_IMAGE [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"leftReturn" ofType:@"png"]]
+#define CANCLE_IMAGE [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"close" ofType:@"png"]]
+#define LOGIN_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bg" ofType:@"png"]]
 
-//我的赞同
-#define kMyLover                @"http://wenda.hers.com.cn/mobile/myvotes?page=%@&pagesize=%@"
+#define LOGIN_BG_568h [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bg_568h" ofType:@"png"]]
 
-//TA的赞同
-#define kOtherLover             @"http://wenda.hers.com.cn/mobile/myvotes?uid=%@&page=%@&pagesize=%@"
+#define INPUT_BG [UIImage imageNamed:@"input_bg"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"input_bg" ofType:@"png"]]
+#define COLOR(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-//赞同我的
-#define kLoverMe                @"http://wenda.hers.com.cn/mobile/myvoted?page=%@&pagesize=%@"
+#define INPUT_BG_Text [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"input_bg_text" ofType:@"png"]]
 
-//赞同TA的
-#define kOtherLoverMe           @"http://wenda.hers.com.cn/mobile/myvoted?uid=%@&page=%@&pagesize=%@"
+#define ACCOUNT_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"account" ofType:@"png"]]
+#define PASSWORD_BG [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"password" ofType:@"png"]]
+#define LOGIN_BTN_BG [UIImage imageNamed:@"login_btn_bg"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"login_btn_bg" ofType:@"png"]]
 
+#define WINXIN_LOGIN_BG [UIImage imageNamed:@"weixin"]// [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"weixin" ofType:@"png"]]
+#define QQ_LOGIN_BG [UIImage imageNamed:@"QQ"]//[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"QQ" ofType:@"png"]]
 
-//最新提问数量
-#define kNewestCount            @"http://wenda.hers.com.cn/mobile/newcount?lastid=%@&udid=%@"
+#define BACK_IMAGE [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"leftReturn" ofType:@"png"]]
+#define CANCLE_IMAGE [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"close" ofType:@"png"]]
+#define COLOR1(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-//举报问题
-#define kReport                 @"http://wenda.hers.com.cn/mobile/report?id=%@"
+//cell accessoryType
+#define CellAccessoryNone @"UITableViewCellAccessoryNone"                   // don't show any accessory view
+#define CellAccessoryDisclosureIndicator @"UITableViewCellAccessoryDisclosureIndicator"    // regular chevron. doesn't track
+#define CellAccessoryDetailDisclosureButton @"UITableViewCellAccessoryDetailDisclosureButton" // blue button w/ chevron. tracks
+#define CellAccessoryCheckmark @"UITableViewCellAccessoryCheckmark"
 
-//收藏列表
-#define kStoreList              @"http://wenda.hers.com.cn/mobile/mycollects?page=%@&pagesize=%@"
-
-//关注/取消关注用户
-#define kFollowUser             @"http://wenda.hers.com.cn/mobile/follow?target=%@"
-
-//关注/粉丝列表
-#define KAttentionOrFanList     @"http://wenda.hers.com.cn/mobile/relations?uid=%@&type=%@&page=%@&pagesize=%@"
-
-//删除消息
-#define kDeleteMessage          @"http://wenda.hers.com.cn/mobile/messagedel?ids=%@"
-
-//获取金蛋记录
-#define kEggsRecord             @"http://wenda.hers.com.cn/mobile/egg_orders?uid=%@&page=%@&pagesize=%@"
-
-//金币商城中兑换商品的列表
-#define kExchageGoodsList       @"http://wenda.hers.com.cn/mobile/products?type=%@&page=%@&pagesize=%@&version=1"
-
-//用户的兑换记录
-#define kExchangeRecord         @"http://wenda.hers.com.cn/mobile/mall_orders?page=%@&pagesize=%@"
-
-//兑换商品
-#define kExchangeGoods          @"http://wenda.hers.com.cn/mobile/exchange?id=%@"
-
-//用户最近使用的收货地址
-#define kRecentlyReceiveAddress @"http://wenda.hers.com.cn/mobile/get_address"
-
-//更新订单地址
-#define kChangeOrderAddress     @"http://wenda.hers.com.cn/mobile/address"
-
-//分享和同步到第三方的问题详情链接
-#define kShareQuestionUrl       @"http://wenda.hers.com.cn/mobile/sharequestion?id=%@"
-
-//获取最新的金蛋提提醒
-#define kNewestEggTips          @"http://wenda.hers.com.cn/mobile/newegg"
-
-//分类信息列表
-#define kCategoryInfo           @"http://wenda.hers.com.cn/mobile/categories"
-
-//具体分类列表
-#define kCategoryList           @"http://wenda.hers.com.cn/mobile/questions?type=%@&category=%@&tag=%@&page=%@&pagesize=%@&version=1"
-
-//兑换商品成功的分享加金币和 砸中实物金蛋的分享加金币
-#define kShareAddCoins          @"http://wenda.hers.com.cn/mobile/sharecoin"
-
-//试用商品列表
-#define kUseGoodsList           @"http://wenda.hers.com.cn/mobile/trial_products?page=%@&pagesize=%@"
-
-//申请试用
-#define kApplyFreeUse           @"http://wenda.hers.com.cn/mobile/apply?id=%@"
-
-//试用商品详情页
-#define kFreeUseDetail          @"http://wenda.hers.com.cn/mobile/trial_product?id=%@"
-
-//试用商品审核查询
-#define kAuditQuery             @"http://wenda.hers.com.cn/mobile/applydetail?id=%@"
-
-//品牌商品详情
-#define kProductDetail          @"http://wenda.hers.com.cn/mobile/brand_product?id=%@&page=%@&pagesize=%@"
-
-//我的试用
-#define kMyFreeUse              @"http://wenda.hers.com.cn/mobile/trial_orders?type=%@&page=%@&pagesize=%@"
-
-//品牌商品详情
-#define kBrandProductDetail     @"http://wenda.hers.com.cn/mobile/brand_product?id=%@&type=%@&page=%@&pagesize=%@"
-
-//等级定义页面地址
-#define kLevelUrl               @"http://wenda.hers.com.cn/level.htm"
-
-//点评
-#define kCommentProduct         @"http://wenda.hers.com.cn/mobile/comment"
-
-//我的点评
-#define kMyComment              @"http://wenda.hers.com.cn/mobile/mycomments?page=%@&pagesize=%@"
-
-//品牌商品列表
-#define kProductList            @"http://wenda.hers.com.cn/mobile/brand_products?brand=%@&cat1=%@&cat2=%@&order=%@&page=%@&pagesize=%@"
-
-//品牌分类
-#define kBrandCategory          @"http://wenda.hers.com.cn/mobile/brand_categories"
-
-//对“产品详情”页面点评投票
-#define kVote_Comment           @"http://wenda.hers.com.cn/mobile/comment_vote?id=%@"
-
-//产品详情的点评删除
-#define kComment_Delete         @"http://wenda.hers.com.cn/mobile/commentdel?id=%@"
-
-//设置取消最佳答案
-#define kSetBestAnswer          @"http://wenda.hers.com.cn/mobile/setbest?id=%@"
-
-//邀请金蛋
-#define kInviteEgg              @"http://wenda.hers.com.cn/mobile/inviteegg?target=%@&token=%@"
-
-//砸邀请金蛋
-#define kHitInviteEgg           @"http://wenda.hers.com.cn/mobile/hit_activity_egg?target=%@"
-
-//首页列表带二级筛选
-#define kHomeList               @"http://wenda.hers.com.cn/mobile/questions?type=%@&sub=%@&category=%@&essence=%@&maxid=%@&page=%@&pagesize=%@&version=1"
-
-//关注/取消关注圈子
-#define kAttentionCircle        @"http://wenda.hers.com.cn/mobile/watch?type=%@&category=%@"
-
-//写心情日记
-#define kWriteDiary             @"http://wenda.hers.com.cn/mobile/write_diary"
-
-//心情日记列表
-#define kDiaryList              @"http://wenda.hers.com.cn/mobile/diaries?uid=%@&page=%@&pagesize=%@"
-
-//问题分享记录
-#define kQuestionShareRecord    @"http://wenda.hers.com.cn/mobile/questionshare?id=%@&type=%@"
-
-//用户签到
-#define kUserCheckin            @"http://wenda.hers.com.cn/mobile/checkin"
-
-//用户今日所获金币详情
-#define kTodayCoinsDetail       @"http://wenda.hers.com.cn/mobile/todaycoindetail"
+#define kCellSegue @"kCellSegue" //cell要跳转的
 

@@ -15,4 +15,12 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import "UIView+KGViewExtend.h"
+#import "QHViewTag.h"
+#import "QHCommonUtil.h"
+#import "MLTransitionAnimation.h"
+#import "UIViewController+MLTransition.h"
+#import "UIViewExt.h"
+
+#import "QHBasicViewController.h"
 #endif

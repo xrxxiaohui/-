@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GMDCircleLoader.h"
 
 @interface MoreCell : UITableViewCell{
   UILabel                      *tipLabel;
-  UIActivityIndicatorView      *actView;
+//  UIActivityIndicatorView      *actView;
+//    GMDCircleLoader *actView;
 }
 
 @property(nonatomic,retain)UILabel *tipLabel;

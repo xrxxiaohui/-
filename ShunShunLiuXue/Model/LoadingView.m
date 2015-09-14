@@ -171,7 +171,7 @@ static LoadingView *loadView = nil;
     RemindConLabel.lineBreakMode = NSLineBreakByCharWrapping;
     RemindConLabel.numberOfLines = 0;
     [RemindConLabel setTextColor:kGreenColor];
-    [RemindConLabel setFont:kFontArialBoldMT14];
+//    [RemindConLabel setFont:kFontArialBoldMT14];
     [remindImageView addSubview:RemindConLabel];
     [RemindConLabel release];
     
@@ -225,11 +225,11 @@ static LoadingView *loadView = nil;
     //调出展示图gif
     NSURL *fileUrl = [NSURL URLWithString:[[ConstObject instance] upgradeGifString]];
     upgradeGifImageView = [[SCGIFImageView alloc] initWithGIFData:[NSData dataWithContentsOfURL:fileUrl]];
-    if (iphoneTypeAbove5) {
-        upgradeGifImageView.frame = CGRectMake(0,90, 320, 363);
-    }else{
-        upgradeGifImageView.frame = CGRectMake(0,80, 320, 363);
-    }
+//    if (iphoneTypeAbove5) {
+//        upgradeGifImageView.frame = CGRectMake(0,90, 320, 363);
+//    }else{
+//        upgradeGifImageView.frame = CGRectMake(0,80, 320, 363);
+//    }
     upgradeGifImageView.backgroundColor = [UIColor clearColor];
     upgradeGifImageView.userInteractionEnabled = YES;
     [mainView addSubview:upgradeGifImageView];

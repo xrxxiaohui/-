@@ -34,19 +34,19 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    if (self.navigationItem.hidesBackButton == NO) {
-        [self.navigationItem setHidesBackButton:YES animated:NO];
-    }
+//    if (self.navigationItem.hidesBackButton == NO) {
+//        [self.navigationItem setHidesBackButton:YES animated:NO];
+//    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationItem setHidesBackButton:YES animated:NO];
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationItem setHidesBackButton:YES animated:NO];
     //设置导航背景图片
     if (kSystemIsIOS7) {
-        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"topBarBg.png"] forBarMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"header_bg_ios7"] forBarMetrics:UIBarMetricsDefault];
     }
     else{
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"topBarBg6.png"] forBarMetrics:UIBarMetricsDefault];
@@ -58,10 +58,10 @@
         self.navigationController.navigationBar.shadowImage = [[[UIImage alloc] init] autorelease];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showLoginSucceedTips)
-                                                 name:kShowLoginSucceedTips
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(showLoginSucceedTips)
+//                                                 name:kShowLoginSucceedTips
+//                                               object:nil];
     
     
 }
@@ -79,41 +79,31 @@
     [self.navigationItem setHidesBackButton:YES animated:NO];
     
     if (!backgroundView) {
-        if (kSystemIsIOS7) {
-            backgroundView =[[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, kScreenBounds.size.width, 64.0f)];
-        }
-        else{
-            backgroundView =[[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, kScreenBounds.size.width, 44.0f)];
-        }
+        backgroundView =[[UIView alloc]initWithFrame:CGRectMake(20.0f, 0.0f,kScreenWidth-40, 64.0f)];
         backgroundView.backgroundColor = [UIColor clearColor];
         backgroundView.tag = 1011;
         
         //设置标题
         UILabel *aTitleLabel = nil;
-        
-        if (kSystemIsIOS7) {
-            aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(45.0f, 8.0f, 212.0f, 48.0f)];
-        }
-        else{
-            aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(45.0f, 5.0f, 212.0f, 40.0f)];
-        }
+        aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth/2-60-13,  11, 120.0f, 40.0f)];
         aTitleLabel.text = titlename;
-        aTitleLabel.font = [UIFont boldSystemFontOfSize:17.0f];
+        
+        aTitleLabel.font = [UIFont fontWithName:@"Arial-BoldMT" size:20];
         aTitleLabel.textAlignment = NSTextAlignmentCenter;
         aTitleLabel.backgroundColor = [UIColor clearColor];
         aTitleLabel.adjustsFontSizeToFitWidth = YES;
         aTitleLabel.textColor = [UIColor whiteColor];
         aTitleLabel.tag = 1022;
         [backgroundView addSubview:aTitleLabel];
-        [aTitleLabel release];
-        
         [self.navigationItem setTitleView:backgroundView];
+        [aTitleLabel release];
         [backgroundView release];
     }
     else{
         UILabel *titlaLabel =  (UILabel*)[backgroundView viewWithTag:1022];
         [titlaLabel setText:titlename];
     }
+
 }
 
 - (void)addButtonReturn:(NSString *)image lightedImage:(NSString *) aLightedImage selector:(SEL)buttonClicked{
@@ -121,16 +111,16 @@
     returnbutton.backgroundColor = [UIColor clearColor];
     [returnbutton setTintColor:[UIColor whiteColor]];
     returnbutton.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-    [returnbutton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [returnbutton setImage:[UIImage imageNamed:aLightedImage] forState:UIControlStateHighlighted];
+    [returnbutton setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [returnbutton setBackgroundImage:[UIImage imageNamed:aLightedImage] forState:UIControlStateHighlighted];
     [returnbutton addTarget:self action:buttonClicked forControlEvents:UIControlEventTouchUpInside];
     
-    if (kSystemIsIOS7) {
-        returnbutton.frame = CGRectMake(-8.0f, 9.0f, [UIImage imageNamed:image].size.width,[UIImage imageNamed:image].size.height);
-    }
-    else{
-        returnbutton.frame = CGRectMake(-5.0f, 2.0f, [UIImage imageNamed:image].size.width,[UIImage imageNamed:image].size.height);
-    }
+//    if (kSystemIsIOS7) {
+        returnbutton.frame = CGRectMake(-12.0f, 12.0f, 32,32);
+//    }
+//    else{
+//        returnbutton.frame = CGRectMake(-5.0f, 2.0f, 30,30);
+//    }
     returnbutton.tag = NAME_MAX;
     [self.navigationItem.titleView addSubview:returnbutton];
 }
@@ -160,8 +150,23 @@
     NSData *data = [request responseData];
     NSString *response = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
     //打印请求返回的原串   JSONKit解析
-//    NSLog(@"response string=%@",response);
+    NSLog(@"response string=%@",response);
     NSDictionary *message = [response objectFromJSONString];
+    
+    /*
+    NSDictionary *resultDic = [message objectForKey:@"result"];
+    if([[resultDic objectForKey:@"status"] isEqualToString:@"01"]){
+    
+//        NSDictionary *finalDic = [resultDic objectForKey:@"businessData"];
+//        return finalDic;
+        return message;
+    }else{
+    
+        NSDictionary *errorMessageDic = [resultDic objectForKey:@"error"];
+        NSString *errorMessage = [errorMessageDic objectForKey:@"errorMessage"];
+        return nil;
+    }
+     */
     return message;
 }
 
@@ -223,6 +228,77 @@
     }
 }
 
+//获取account信息
+-(NSDictionary *)accountInfo{
+    
+    NSString *plistPath = [self fileTextPath:@"token.plist"];
+    NSMutableArray *listArray = [[NSMutableArray alloc ] initWithContentsOfFile:plistPath];
+    NSString *userName = @"";
+    NSString *agreeCount = @"0";
+    NSString *fansCount = @"0";
+    NSString *viewCount = @"0";
+    NSString *answer_count = @"0";
+    
+    if([listArray count]==0)
+        return nil;
+    else if ([listArray count]>2)
+        userName = [listArray objectAtIndex:2];
+    else if ([listArray count]>3)
+        agreeCount = [listArray objectAtIndex:3];
+    else if ([listArray count]>4)
+        fansCount = [listArray objectAtIndex:4];
+    else if ([listArray count]>5)
+        viewCount = [listArray objectAtIndex:5];
+    else if ([listArray count]>6)
+        answer_count = [listArray objectAtIndex:6];
+    
+    NSDictionary *finalDic = [NSDictionary dictionaryWithObjectsAndKeys:userName,@"user_name",agreeCount,@"agree_count",fansCount,@"fans_count",viewCount, @"views_count",answer_count,@"answer_count",nil];
+    return finalDic;
+//    NSString *userName = [NSString stringWithFormat:@"%@",[accountDic objectForKey:@"user_name"]];
+//    NSString *agree_count = [NSString stringWithFormat:@"%@",[accountDic objectForKey:@"agree_count"]];
+//    NSString *fans_count = [NSString stringWithFormat:@"%@",[accountDic objectForKey:@"fans_count"]];
+//    NSString *views_count = [NSString stringWithFormat:@"%@",[accountDic objectForKey:@"views_count"]];
+    
+//    [listArray addObject:userName];
+//    [listArray addObject:agree_count];
+//    [listArray addObject:fans_count];
+//    [listArray addObject:views_count];
+}
+
+//获取token
+-(NSString *)userToken{
+    
+    NSString *plistPath = [self fileTextPath:@"token.plist"];
+    NSMutableArray *listArray = [[NSMutableArray alloc ] initWithContentsOfFile:plistPath];
+    if([listArray count]==0)
+        return nil;
+    return [listArray objectAtIndex:0];
+}
+
+//获取uid
+-(NSString *)userIDs{
+    
+    NSString *plistPath = [self fileTextPath:@"token.plist"];
+    NSMutableArray *listArray = [[NSMutableArray alloc ] initWithContentsOfFile:plistPath];
+    if([listArray count]==0)
+        return nil;
+    else if ([listArray count]>1)
+        return [listArray objectAtIndex:1];
+    else
+        return @"";
+}
+
+//删除token
+-(void)deleteToken{
+    
+    NSString *plistPath = [self fileTextPath:@"token.plist"];
+    NSMutableArray *listArray = [[NSMutableArray alloc ] init];
+    [listArray writeToFile:plistPath atomically:YES];
+    [listArray release];
+}
+
+
+
 - (void)showMessageBox:(id)aDelegate title:(NSString *)aTitle  message:(NSString *)aMessage cancel:(NSString *)aCancel confirm:(NSString *)aConfirm{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:aTitle
                                                     message:aMessage
@@ -257,29 +333,29 @@
 }
 
 
-- (NSString *)getDeviceIdentifier{
-    NSString *deviceIdentify = nil;
-    if (kSystemIsAboveIOS6) {
-        deviceIdentify = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    }
-    else{
-        deviceIdentify = [[UIDevice currentDevice]  uniqueDeviceIdentifier];
-    }
-    NSLog(@"deviceIdentify===%@",deviceIdentify);
-    return deviceIdentify;
-}
-
-- (NSString *)getDeviceIdentifierForWall{
-    NSString *deviceIdentify = nil;
-    if (kSystemIsAboveIOS6) {
-        deviceIdentify = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
-    }
-    else{
-        deviceIdentify = [[UIDevice currentDevice] macaddress];
-    }
-    NSLog(@"deviceIdentify===%@",deviceIdentify);
-    return deviceIdentify;
-}
+//- (NSString *)getDeviceIdentifier{
+//    NSString *deviceIdentify = nil;
+//    if (kSystemIsAboveIOS6) {
+//        deviceIdentify = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+//    }
+//    else{
+//        deviceIdentify = [[UIDevice currentDevice]  uniqueDeviceIdentifier];
+//    }
+//    NSLog(@"deviceIdentify===%@",deviceIdentify);
+//    return deviceIdentify;
+//}
+//
+//- (NSString *)getDeviceIdentifierForWall{
+//    NSString *deviceIdentify = nil;
+//    if (kSystemIsAboveIOS6) {
+//        deviceIdentify = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+//    }
+//    else{
+//        deviceIdentify = [[UIDevice currentDevice] macaddress];
+//    }
+//    NSLog(@"deviceIdentify===%@",deviceIdentify);
+//    return deviceIdentify;
+//}
 
 
 
@@ -366,65 +442,16 @@
         NSLog(@"time Out!!!");
         [[LoadingView sharedManager] showView:self.view message:@"请求超时,请重试..." originX:100.0f originY:150.0f delay:1.5f];
         //发送超时通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNetWorkTimeOutNotification
-                                                            object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNetWorkTimeOutNotification
+//                                                            object:nil];
     }
 }
 
 #pragma mark - 砸金蛋
-//砸金蛋界面
--(void)showTheGif:(UIView *)mainView{
-    
-    blackViews = [[UIView alloc] init];
-    blackViews.backgroundColor = [UIColor whiteColor];
-    blackViews.alpha = 0.5;
-    [blackViews setFrame:CGRectMake(0, 0, kScreenBounds.size.width, kScreenBounds.size.height)];
-    [mainView addSubview:blackViews];
-    
-    //调出展示图gif
-    NSURL *fileUrl = [NSURL URLWithString:[[ConstObject instance] DanImageString]];
-    gifViews = [[SCGIFImageView alloc] initWithGIFData:[NSData dataWithContentsOfURL:fileUrl]];
-    gifViews.frame = CGRectMake(0,kScreenBounds.size.height/2-140, kScreenBounds.size.width, 340);
-    gifViews.backgroundColor = [UIColor clearColor];
-    gifViews.userInteractionEnabled = YES;
-    [mainView addSubview:gifViews];
-    [gifViews release];
-    
-    //点击事件
-    UITapGestureRecognizer *tapGesture=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapEvent:)];
-    [gifViews addGestureRecognizer:tapGesture];
-    [tapGesture setNumberOfTapsRequired:1];
-    [tapGesture release];
-    [blackViews release];
-}
-
-- (void)showSpecialIcon:(UIButton *)sender level:(NSString *)levelString{
-    // 1为官方 2为顾问 3为专家 4为达人
-    switch ([levelString intValue]) {
-        case 4:
-            [sender setHidden:NO];
-            [sender setImage:[UIImage imageNamed:@"special1.png"] forState:UIControlStateNormal];
-            break;
-        case 3:
-            [sender setHidden:NO];
-            [sender setImage:[UIImage imageNamed:@"special2.png"] forState:UIControlStateNormal];
-            break;
-        case 2:
-            [sender setHidden:NO];
-            [sender setImage:[UIImage imageNamed:@"special3.png"] forState:UIControlStateNormal];
-            break;
-        case 1:
-            [sender setHidden:NO];
-            [sender setImage:[UIImage imageNamed:@"special4.png"] forState:UIControlStateNormal];
-            break;
-        default:
-            [sender setHidden:YES];
-            break;
-    }
-}
 
 - (void)saveCookies{
     NSData *cookies = [NSKeyedArchiver archivedDataWithRootObject:[NSHTTPCookieStorage sharedHTTPCookieStorage].cookies];
+    NSLog(@"cookies---%@",cookies);
     [[NSUserDefaults standardUserDefaults] setObject:cookies forKey:@"savedCookie"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -454,62 +481,6 @@
     }
 }
 
-- (void)tapEvent:(UITapGestureRecognizer *)gesture
-{
-    NSLog(@"单机");
-    
-    NSURL *fileUrl = [NSURL URLWithString:[[ConstObject instance] afterImageString]];
-    zaKaiDanImageViews = [[SCGIFImageView alloc] initWithGIFData:[NSData dataWithContentsOfURL:fileUrl]];
-    [zaKaiDanImageViews setFrame:gifViews.frame];
-    gifViews.hidden = YES;
-    [self.view addSubview:zaKaiDanImageViews];
-    [zaKaiDanImageViews release];
-    
-    UILabel *coinLabel = [[UILabel alloc] init];
-    [coinLabel setBackgroundColor:[UIColor clearColor]];
-    [coinLabel setFrame:CGRectMake(85, 100, 50, 30)];
-    [coinLabel setTextColor:[UIColor whiteColor]];
-    [coinLabel setTextAlignment:NSTextAlignmentCenter];
-    [coinLabel setFont:[UIFont fontWithName:@"ArialHebrew" size:22]];
-    [zaKaiDanImageViews addSubview:coinLabel];
-    [coinLabel setText:[[ConstObject instance] coinNumber]];
-    [coinLabel release];
-    
-    UILabel *coinGetLabel = [[UILabel alloc] init];
-    [coinGetLabel setBackgroundColor:[UIColor clearColor]];
-    [coinGetLabel setFrame:CGRectMake(185, 4, 50, 30)];
-    [coinGetLabel setTextColor:[UIColor colorWithRed:206./255. green:62./255. blue:43./255. alpha:1]];
-    [coinGetLabel setTextAlignment:NSTextAlignmentCenter];
-    [coinGetLabel setFont:[UIFont fontWithName:@"ArialHebrew" size:22]];
-    [zaKaiDanImageViews addSubview:coinGetLabel];
-    [coinGetLabel setText:[[ConstObject instance] coinNumber]];
-    [coinGetLabel release];
-    [self performSelector:@selector(toDisappearTheView) withObject:nil afterDelay:4.0f];
-    
-    jinBiTextLabels =[[UILabel alloc] init];
-    [jinBiTextLabels setBackgroundColor:[UIColor clearColor]];
-    [jinBiTextLabels setFrame:CGRectMake(15, 28, kScreenBounds.size.width, 30)];
-    [jinBiTextLabels setTextColor:[UIColor colorWithRed:206./255. green:62./255. blue:43./255. alpha:1]];
-    [jinBiTextLabels setTextAlignment:NSTextAlignmentCenter];
-    [jinBiTextLabels setFont:[UIFont fontWithName:@"ArialHebrew-Bold" size:16]];
-    [jinBiTextLabels setText:[[ConstObject instance] tipString]];
-    [zaKaiDanImageViews addSubview:jinBiTextLabels];
-    [jinBiTextLabels release];
-    
-}
-
--(void)requestMallZanDanSuccess:(ASIHTTPRequest *)request{
-    
-    NSDictionary *dic = [self parseJsonRequest:request];
-    
-    NSLog(@"----%@",dic);
-}
-
--(void)requestMallZanDanFailed:(ASIHTTPRequest *)request{
-    
-    NSDictionary *dic = [self parseJsonRequest:request];
-    NSLog(@"----%@",dic);
-}
 
 -(void)requestZanDanSuccess:(ASIHTTPRequest *)request{
     
@@ -740,6 +711,18 @@
     return content;
 }
 
+#pragma mark - 字符串判断
+- (BOOL) isBlankString:(NSString *)string
+{
+    if (string == nil || string == NULL) { return YES; } if ([string isKindOfClass:[NSNull class]]) { return YES; } if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) { return YES; } return NO;
+}
+
+#pragma mark - 空字典判断
+- (BOOL) isBlankDictionary:(NSDictionary *)dictionary
+{
+    if (dictionary == nil || dictionary == NULL) { return YES; } if ([dictionary isKindOfClass:[NSNull class]]) { return YES; }  return NO;
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -750,13 +733,76 @@
     [commonModel release];
     commonModel = nil;
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:kShowLoginSucceedTips
-                                                  object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self
+//                                                    name:kShowLoginSucceedTips
+//                                                  object:nil];
     
     
     [super dealloc];
 }
+
+
+//时间戳转时间
+-(NSString *)transformTime:(NSString *)originTime{
+    
+    NSTimeInterval time=[originTime doubleValue]+28800;//因为时差问题要加8小时 == 28800 sec
+    NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
+    NSLog(@"date:%@",[detaildate description]);
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式,这里可以设置成自己需要的格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *currentDateStr = [dateFormatter stringFromDate: detaildate];
+    return currentDateStr;
+}
+
+//计算字符串size
+- (CGSize)getStringSizeWith:(NSString*)_mystr boundingRectWithSize:(CGSize)_boundSize font:(UIFont*)font{
+    
+    if ([self isBlankString:_mystr]){
+        return CGSizeMake(_boundSize.width, 20);
+    }
+    
+    NSDictionary *attribute = @{NSFontAttributeName: font};
+    
+    CGSize size = [_mystr  boundingRectWithSize:_boundSize options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    return size;
+    
+}
+
+-(UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size {
+    
+        CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    
+        UIGraphicsBeginImageContext(rect.size);
+    
+        CGContextRef context = UIGraphicsGetCurrentContext();
+    
+        CGContextSetFillColorWithColor(context, [color CGColor]);
+    
+        CGContextFillRect(context, rect);
+    
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+        UIGraphicsEndImageContext();
+    
+        return image;
+    
+    }
+
+-(NSString *)trimString:(NSString *)tempString{
+
+    tempString = [tempString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    tempString = [tempString stringByReplacingOccurrencesOfString:@"\r"withString:@""];
+    tempString = [tempString stringByReplacingOccurrencesOfString:@"\t"withString:@""];
+    NSString *temps =[tempString substringToIndex:1];
+    if([temps isEqualToString:@"\n"]){
+        tempString = [tempString stringByReplacingOccurrencesOfString:@"\n"withString:@""];
+    }
+    return tempString;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
