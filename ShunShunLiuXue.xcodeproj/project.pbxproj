@@ -225,7 +225,11 @@
 		A10D4BB91BA66CED00E827A7 /* SSSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D4BB71BA66CED00E827A7 /* SSSettingTableViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		A10D4BBA1BA66CED00E827A7 /* SSSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10D4BB81BA66CED00E827A7 /* SSSettingTableViewCell.xib */; };
 		A10D4BBE1BA6935800E827A7 /* SSSetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D4BBD1BA6935800E827A7 /* SSSetModel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A1E728451BA7B1A0002348D0 /* SSNewFeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E728441BA7B1A0002348D0 /* SSNewFeatureViewController.m */; };
+		A1E728491BA7BC2C002348D0 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E728481BA7BC2C002348D0 /* UIView+Frame.m */; };
+		A1E7284C1BA7C0F4002348D0 /* UIWindow+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E7284B1BA7C0F4002348D0 /* UIWindow+Extension.m */; };
 		A1EA2DEF1BA6B8B8006FCE0A /* AddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EA2DEE1BA6B8B8006FCE0A /* AddressViewController.m */; };
+		A1EA2DF21BA6D072006FCE0A /* SSFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EA2DF11BA6D072006FCE0A /* SSFeedbackController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -631,8 +635,16 @@
 		A10D4BB81BA66CED00E827A7 /* SSSettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SSSettingTableViewCell.xib; sourceTree = "<group>"; };
 		A10D4BBC1BA6935800E827A7 /* SSSetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSSetModel.h; sourceTree = "<group>"; };
 		A10D4BBD1BA6935800E827A7 /* SSSetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSSetModel.m; sourceTree = "<group>"; };
+		A1E728431BA7B1A0002348D0 /* SSNewFeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNewFeatureViewController.h; sourceTree = "<group>"; };
+		A1E728441BA7B1A0002348D0 /* SSNewFeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNewFeatureViewController.m; sourceTree = "<group>"; };
+		A1E728471BA7BC2C002348D0 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		A1E728481BA7BC2C002348D0 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		A1E7284A1BA7C0F4002348D0 /* UIWindow+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Extension.h"; sourceTree = "<group>"; };
+		A1E7284B1BA7C0F4002348D0 /* UIWindow+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Extension.m"; sourceTree = "<group>"; };
 		A1EA2DED1BA6B8B8006FCE0A /* AddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressViewController.h; sourceTree = "<group>"; };
 		A1EA2DEE1BA6B8B8006FCE0A /* AddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressViewController.m; sourceTree = "<group>"; };
+		A1EA2DF01BA6D072006FCE0A /* SSFeedbackController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSFeedbackController.h; sourceTree = "<group>"; };
+		A1EA2DF11BA6D072006FCE0A /* SSFeedbackController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSFeedbackController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -771,6 +783,8 @@
 				276E3A2E1B9E7C5500B76D1D /* MyMessageViewController.m */,
 				276E3A301B9E7F3D00B76D1D /* SettingViewController.h */,
 				276E3A311B9E7F3D00B76D1D /* SettingViewController.m */,
+				A1EA2DF01BA6D072006FCE0A /* SSFeedbackController.h */,
+				A1EA2DF11BA6D072006FCE0A /* SSFeedbackController.m */,
 			);
 			path = PersonalInfo;
 			sourceTree = "<group>";
@@ -811,6 +825,7 @@
 		278905281B74856F00892EB6 /* ShunShunLiuXue */ = {
 			isa = PBXGroup;
 			children = (
+				A1E728461BA7BC0A002348D0 /* Categories */,
 				278905811B74ACC300892EB6 /* Frameworks */,
 				278905771B74AA6A00892EB6 /* CustomCell */,
 				278905711B74A9A800892EB6 /* Model */,
@@ -890,6 +905,7 @@
 		2789056C1B748F8300892EB6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1E728421BA7B143002348D0 /* NewFeature */,
 				276E3A231B9E7C1600B76D1D /* PersonalInfo */,
 				27A888E01B8C5A9F0091BBFB /* ShareSDK */,
 				278906951B78426F00892EB6 /* UserController */,
@@ -1607,6 +1623,26 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		A1E728421BA7B143002348D0 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				A1E728431BA7B1A0002348D0 /* SSNewFeatureViewController.h */,
+				A1E728441BA7B1A0002348D0 /* SSNewFeatureViewController.m */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		A1E728461BA7BC0A002348D0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A1E7284A1BA7C0F4002348D0 /* UIWindow+Extension.h */,
+				A1E7284B1BA7C0F4002348D0 /* UIWindow+Extension.m */,
+				A1E728471BA7BC2C002348D0 /* UIView+Frame.h */,
+				A1E728481BA7BC2C002348D0 /* UIView+Frame.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1661,6 +1697,7 @@
 					};
 					2789053E1B74857000892EB6 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 3AW35Q8JEY;
 						TestTargetID = 278905251B74856F00892EB6;
 					};
 				};
@@ -1806,6 +1843,7 @@
 				276E3A261B9E7C2E00B76D1D /* MyCareViewController.m in Sources */,
 				278905FF1B74B4B600892EB6 /* ASIWebPageRequest.m in Sources */,
 				27045D001B8C64960024BC04 /* QuestionAnsDetailTableViewCell.m in Sources */,
+				A1E728451BA7B1A0002348D0 /* SSNewFeatureViewController.m in Sources */,
 				278906591B74B99700892EB6 /* NSDataAdditions.m in Sources */,
 				278CDE831B87FF4C00BF2625 /* MJRefreshFooter.m in Sources */,
 				27AB6E0C1B8B139900A40453 /* GMDCircleLoader.m in Sources */,
@@ -1849,11 +1887,13 @@
 				2789070B1B79C99700892EB6 /* QHConfiguredObj.m in Sources */,
 				2789067B1B74B9C900892EB6 /* UIButton+WebCache.m in Sources */,
 				2789067C1B74B9C900892EB6 /* UIImageView+WebCache.m in Sources */,
+				A1EA2DF21BA6D072006FCE0A /* SSFeedbackController.m in Sources */,
 				278905F81B74B4B600892EB6 /* ASIDataCompressor.m in Sources */,
 				278CDE8A1B87FF4C00BF2625 /* UIScrollView+MJRefresh.m in Sources */,
 				2789062B1B74B6FA00892EB6 /* NSString+SBJSON.m in Sources */,
 				278906021B74B4B600892EB6 /* ASICloudFilesContainerRequest.m in Sources */,
 				2789075F1B7AD92000892EB6 /* LoginViewController.m in Sources */,
+				A1E728491BA7BC2C002348D0 /* UIView+Frame.m in Sources */,
 				278906301B74B6FA00892EB6 /* SBJsonWriter.m in Sources */,
 				27665B8C1BA124FA0004481E /* yConst.m in Sources */,
 				2789070C1B79C99700892EB6 /* SliderViewController.m in Sources */,
@@ -1864,6 +1904,7 @@
 				27541BC11B7DEEAE00E8D536 /* SearchViewController.m in Sources */,
 				278CDE811B87FF4C00BF2625 /* MJRefreshComponent.m in Sources */,
 				278905BF1B74B48200892EB6 /* UITempletViewController.m in Sources */,
+				A1E7284C1BA7C0F4002348D0 /* UIWindow+Extension.m in Sources */,
 				278906101B74B4D000892EB6 /* CommonModel.m in Sources */,
 				2789074A1B7A503800892EB6 /* RegisterViewController.m in Sources */,
 				278906011B74B4B600892EB6 /* ASICloudFilesContainer.m in Sources */,
@@ -2032,9 +2073,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: liu xuguang (7LRCHL7HNU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu xuguang (7LRCHL7HNU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Feipeng Wang (N5BSG8CL4M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Feipeng Wang (N5BSG8CL4M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShunShunLiuXue/Classes/ShareSDK/Connection",
@@ -2057,7 +2099,7 @@
 					"$(PROJECT_DIR)/ShunShunLiuXue/Classes/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3dca8c57-dc3a-44ee-a488-3a30572def31";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2065,9 +2107,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: liu xuguang (7LRCHL7HNU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: liu xuguang (7LRCHL7HNU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Feipeng Wang (N5BSG8CL4M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Feipeng Wang (N5BSG8CL4M)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ShunShunLiuXue/Classes/ShareSDK/Connection",
@@ -2090,7 +2133,7 @@
 					"$(PROJECT_DIR)/ShunShunLiuXue/Classes/ShareSDK/Extend/WeChatSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3dca8c57-dc3a-44ee-a488-3a30572def31";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -2098,6 +2141,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2109,6 +2154,7 @@
 				INFOPLIST_FILE = ShunShunLiuXueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShunShunLiuXue.app/ShunShunLiuXue";
 			};
 			name = Debug;
@@ -2117,6 +2163,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2124,6 +2172,7 @@
 				INFOPLIST_FILE = ShunShunLiuXueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShunShunLiuXue.app/ShunShunLiuXue";
 			};
 			name = Release;
